@@ -1,0 +1,14 @@
+<ion-content fullscreen="true"><!-- ESSA LINHA AJUSTA O TOPO -->
+
+  <ion-item>
+    <ion-label position="floating">CEP</ion-label>
+    <ion-input [(ngModel)]="cep" (ionBlur)="buscarCep()"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="mostrarCidadeEstado()">Mostrar cidade e estado</ion-button>
+
+  <ion-item *ngIf="mensagemEndereco">
+    <ion-label>{{ mensagemEndereco }}</ion-label>
+  </ion-item>
+
+</ion-content>

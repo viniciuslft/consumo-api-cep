@@ -1,20 +1,52 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Lista de Todos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen="true"> <!-- ESSA LINHA AJUSTA O TOPO -->
+  <ion-segment [(ngModel)]="filtroStatus" (ionChange)="filtrarTodos()">
+    <ion-segment-button value="todos">
+      <ion-label>Todos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="completos">
+      <ion-label>Completos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="incompletos">
+      <ion-label>Incompletos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-label position="floating">Buscar por nome</ion-label>
+    <ion-input [(ngModel)]="filtroNome" (ionInput)="filtrarTodos()"></ion-input>
+  </ion-item>
+
+
+  <ion-list>
+    <ion-item *ngFor="let todo of todosFiltrados">
+      <ion-label>
+        <h2>{{ todo.title }}</h2>
+        <p>Status: {{ todo.completed ? 'Concluído' : 'Pendente' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<!--PARTE 01-->
+<!--ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Todos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let todo of todos">
+      <ion-label>
+        <h2>{{ todo.title }}</h2>
+        <p>Status: {{ todo.completed ? 'Concluído' : 'Pendente' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content-->
