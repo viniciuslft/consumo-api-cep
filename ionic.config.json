@@ -1,0 +1,7 @@
+{
+  "name": "consumoCEP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
